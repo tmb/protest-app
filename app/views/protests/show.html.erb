@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @protest.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @protest.location %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @protest.description %>
+</p>
+
+<p>
+  <strong>What to bring:</strong>
+  <%= @protest.what_to_bring %>
+</p>
+
+<p>
+  <strong>Organizer:</strong>
+  <%= @protest.organizer %>
+</p>
+
+<%= link_to 'Edit', edit_protest_path(@protest) %> |
+<%= link_to 'Back', protests_path %>

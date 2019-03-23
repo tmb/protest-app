@@ -1,0 +1,42 @@
+<%= form_with(model: protest, local: true) do |form| %>
+  <% if protest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(protest.errors.count, "error") %> prohibited this protest from being saved:</h2>
+
+      <ul>
+      <% protest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :what_to_bring %>
+    <%= form.text_area :what_to_bring %>
+  </div>
+
+  <div class="field">
+    <%= form.label :organizer_id %>
+    <%= form.text_field :organizer_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
