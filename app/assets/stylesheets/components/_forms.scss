@@ -22,7 +22,6 @@ textarea {
   position: relative;
   transition: border 0.2s ease;
   width: 100%;
-  max-width: 24rem;
 
   &:focus {
     border-color: $base;
