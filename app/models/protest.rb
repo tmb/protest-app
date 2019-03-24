@@ -26,7 +26,6 @@ class Protest < ApplicationRecord
   def generate_pdf
     pdf = Prawn::Document.new
     pdf.text "hi!"
-
     pdf
   end
 
@@ -38,11 +37,28 @@ class Protest < ApplicationRecord
     RQRCode::QRCode.new(upload_image_url).as_svg
   end
 
+  include Rails.application.routes.url_helpers
+  def public_url
+    "https://protestor-ljctmb.herokuapp.com#{protest_path(self)}"
+  end
+
+  def twitter_url
+    social_network(:twitter, '/share', text: name, url: public_url)
+  end
+
+  def facebook_url
+    social_network(:facebook, '/sharer/sharer.php', u: public_url)
+  end
+
   private
 
   def add_image_key
     unless self.image_key
       self.image_key = ('a'..'z').to_a.shuffle[0, 8].join
     end
+  end
+
+  def social_network(name, sharer, options = {})
+    "https://#{name}.com#{sharer}?#{options.to_query}"
   end
 end

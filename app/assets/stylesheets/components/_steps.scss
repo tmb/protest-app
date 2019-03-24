@@ -67,6 +67,22 @@
 
   a {
     color: $white;
+    word-break: break-all;
+  }
+}
+
+.bg-poster {
+  background: radial-gradient(
+    ellipse farthest-corner at top left,
+    $fuschia6,
+    $violet6
+  );
+  color: $white;
+
+  .btn {
+    background: $white;
+    color: $violet6;
+    margin: 0 0.5rem 0 0;
   }
 }
 

@@ -46,26 +46,41 @@
 <% end %>
 
 <div class="grid grid--spacious mt3">
-<div class="card bg-notify">
-  <h2 class="flex items-center mt0">
-    <%= inline_icon 'message', size: 36, class: 'mr1' %>
-    Notify all protestors
-  </h2>
-  <p class="mt0">Send an SMS blast to all your attendees.</p>
+  <div class="card bg-notify">
+    <h2 class="flex items-center mt0">
+      <%= inline_icon 'message', size: 36, class: 'mr1' %>
+      Notify all protestors
+    </h2>
+    <p class="mt0">Send an SMS blast to all your attendees.</p>
 
-  <%= form_tag(protest_admin_notify_path(@protest), method: "post") do %>
-    <%= label_tag :message %>
-    <%= text_area_tag :message %>
-    <%= submit_tag "Send!" %>
-  <% end %>
-</div>
+    <%= form_tag(protest_admin_notify_path(@protest), method: "post") do %>
+      <%= label_tag :message %>
+      <%= text_area_tag :message %>
+      <%= submit_tag "Send!" %>
+    <% end %>
+  </div>
 
-<div class="card bg-media">
-  <h2 class="flex items-center mt0 mb2">
-    <%= inline_icon 'photo', size: 36, class: 'mr1' %>
-    Image upload URL
-  </h2>
-  <p>Distibute to trusted organizers to upload event media.</p>
-  <strong><a href="https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %>">https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %></a></strong>
-</div>
+  <div>
+
+  <div class="card bg-media mb2 md-mb3">
+    <h2 class="flex items-center mt0">
+      <%= inline_icon 'photo', size: 36, class: 'mr1' %>
+      Image upload URL
+    </h2>
+    <p class="mt0">Distibute to trusted organizers to upload event media.</p>
+    <strong><a href="https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %>">protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %></a></strong>
+  </div>
+
+  <div class="card bg-poster">
+    <h2 class="flex items-center mt0">
+      <%= inline_icon 'send', size: 36, class: 'mr1' %>
+      Share the event
+    </h2>
+    <div>
+      <%= link_to 'Print poster', protest_path(@protest, format: :pdf), target: '_blank', class: 'btn' %>
+      <%= link_to 'Twitter', @protest.twitter_url, target: '_blank', class: 'btn' %>
+      <%= link_to 'Facebook', @protest.facebook_url, target: '_blank', class: 'btn' %>
+    </div>
+  </div>
+  </div>
 </div>
