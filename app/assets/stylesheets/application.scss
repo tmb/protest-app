@@ -198,6 +198,12 @@ svg {
   background: $yellow0;
 }
 
+.galleria {
+  height: 400px;
+  border-radius: 0.75rem;
+  background: $gray3;
+}
+
 @import 'basscss';
 @import 'space';
 @import 'utilities';
