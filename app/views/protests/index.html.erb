@@ -1,30 +1,15 @@
+<% page_md %>
+
 <h1>Upcoming events</h1>
 <p class="h3">Near <span class="primary medium underline-dotted">Sunnyvale, CA</span></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Description</th>
-      <th>What to bring</th>
-      <th>Organizer</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @protests.each do |protest| %>
-      <tr>
-        <td><%= protest.name %></td>
-        <td><%= protest.location %></td>
-        <td><%= protest.description %></td>
-        <td><%= protest.what_to_bring %></td>
-        <td><%= protest.organizers %></td>
-        <td><%= link_to 'Show', protest %></td>
-        <td><%= link_to 'Edit', edit_protest_path(protest) %></td>
-        <td><%= link_to 'Destroy', protest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @protests.each do |protest| %>
+  <%= link_to protest, class: 'mb3 card block text-decoration-none black' do %>
+    <h2 class="mt0"><%= protest.name %></h2>
+    <p><%= protest.description %></p>
+    <div class="flex items-center">
+      <%= inline_icon 'map-pin', size: 24, class: 'muted mr1' %>
+      <%= protest.location %>
+    </div>
+  <% end %>
+<% end %>

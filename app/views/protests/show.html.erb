@@ -1,12 +1,15 @@
 <% page_md %>
 
-<%= link_to 'All Events', protests_path, class: 'breadcrumb block h3 mt3' %>
+</main>
+<header class="w-100 map-header" style="background-image: url(<%= map_url %>);">
+  <div class="container container--md">
+    <%= link_to 'All Events', protests_path, class: 'breadcrumb block h3 mt3' %>
+    <h1 class="heading"><%= @protest.name %></h1>
+    <%= pop_icon_to 'edit', edit_protest_path(@protest), class: 'info right ml2 tooltipped tooltipped--s', 'aria-label': 'Edit details' %>
+  </div>
+</header>
 
-<h1 class="heading">
-  <%= @protest.name %>
-</h1>
-
-<%= link_to 'Edit', edit_protest_path(@protest), class: 'btn bg-info right ml2' %>
+<main class="container container--md">
 
 <p class="h2">
   <%= @protest.description %>

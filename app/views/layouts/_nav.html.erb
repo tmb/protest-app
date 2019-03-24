@@ -1,10 +1,10 @@
-<header class="flex items-center justify-between nav container mt3">
+<header class="flex items-center justify-between mt3 container <%= content_for :container_class %>">
   <%= link_to root_path do %>
     <%= image_tag '/flag.svg', alt: 'Logo' %>
   <% end %>
   <nav class="flex items-center">
     <%= link_to 'Upcoming', protests_path, class: 'text-decoration-none muted medium' %>
-    <%= link_to 'Organize', new_protest_path, class: 'btn bg-primary ml3' %>
+    <%= link_to 'Organize', new_protest_path, class: 'btn bg-primary ml2 md-ml3' %>
   </nav>
 </header>
 

@@ -198,43 +198,6 @@ svg {
   background: $yellow0;
 }
 
-// Make mobile views nice. Full-bleed separator lines
-@media screen and (max-width: 32em) {
-  table,
-  .list,
-  .heading,
-  .details,
-  h1,
-  h2,
-  h3 {
-    width: 100vw;
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-  table {
-    td,
-    th {
-      &:first-child {
-        padding-left: 1rem;
-      }
-      &:last-child {
-        padding-right: 1rem;
-      }
-    }
-  }
-  .list > a > li,
-  .list > li,
-  .heading,
-  .details > p,
-  .details > div,
-  h1,
-  h2,
-  h3 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
 @import 'basscss';
 @import 'space';
 @import 'utilities';
