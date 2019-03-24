@@ -34,7 +34,7 @@ if @protest.what_to_bring.present?
 	text "What to bring", size: 20, style: :condensed, color: black
 	@protest.what_to_bring.lines.map do |line|
 		move_down 4
-		text "• line", size: 16, color: black
+		text "• #{line}", size: 16, color: black
 	end
 end
 
