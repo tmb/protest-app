@@ -12,6 +12,13 @@ class ProtestsController < ApplicationController
   # GET /protests/1.json
   def show
     @rsvp_person = @protest.rsvp_people.new
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        send_data @protest.generate_pdf.render
+      end
+    end
   end
 
   # GET /protests/new

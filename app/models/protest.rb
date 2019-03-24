@@ -23,6 +23,13 @@ class Protest < ApplicationRecord
     longitude
   end
 
+  def generate_pdf
+    pdf = Prawn::Document.new
+    pdf.text "hi!"
+    
+    pdf
+  end
+
   private
 
   def add_image_key
