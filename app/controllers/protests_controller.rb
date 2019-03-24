@@ -70,6 +70,21 @@ class ProtestsController < ApplicationController
   def admin
   end
 
+  def image_upload
+    @protest = Protest.find_by_image_key(params[:key])
+    redirect_to protests_path, notice: "Invalid key!" unless @protest
+  end
+
+  def upload
+    @protest = Protest.find_by_image_key(params[:key])
+    redirect_to protests_path, notice: "Invalid key!" unless @protest
+    if @protest.update(image_upload_params)
+      flash[:success] = "Your image(s) have been uploaded!"
+      redirect_to protests_path
+    else
+      redirect_to protests_path
+    end
+  end
 
 
   # DELETE /protests/1
@@ -99,5 +114,9 @@ class ProtestsController < ApplicationController
 
     def rsvp_params
       params.require(:rsvp_person).permit(:name, :email, :phone_number)
+    end
+
+    def image_upload_params
+      params.require(:protest).permit(images: [])
     end
 end
