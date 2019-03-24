@@ -15,12 +15,19 @@ class Protest < ApplicationRecord
     rsvp_people
   end 
 
+  def lat
+    latitude
+  end
+
+  def lng
+    longitude
+  end
+
   private
 
   def add_image_key
     unless self.image_key
-      self.image_key = ('a'..'z').to_a.shuffle[0,8].join
+      self.image_key = ('a'..'z').to_a.shuffle[0, 8].join
     end
   end
-
 end

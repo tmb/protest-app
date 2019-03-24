@@ -1,55 +1,71 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Normal view', @protest, class: 'block mt2 breadcrumb' %>
+<h1 class="flex items-center">
+  <%= inline_icon 'admin-badge', size: 36, class: 'warning mr1' %>
+  <span class="h1 flex-auto"><%= @protest.name %></span>
+  <%= link_to 'Edit', edit_protest_path(@protest), class: 'btn' %>
+</h1>
 
+<div class="details">
 <p>
-  <strong>Name:</strong>
-  <%= @protest.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
+  <strong>Location</strong>
   <%= @protest.location %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Description</strong>
   <%= @protest.description %>
 </p>
 
-<p>
-  <strong>What to bring:</strong>
-  <%= @protest.what_to_bring %>
-</p>
+<div>
+  <strong>What to bring</strong>
+  <ul class="mt0 mb0"><%= @protest.what_to_bring.lines.map { |li| content_tag :li, li }.join.html_safe %></ul>
+</div>
+</div>
 
-
-<h2>RSVPs</h2>
+<h2 class="flex items-center">
+  RSVPs
+  <%= badge_for @protest.rsvp_people.size %>
+</h2>
+<% if @protest.rsvp_people.any? %>
 <table>
-<tr>
-  <th>Name</th>
-  <th>Emails</th>
-  <th>Phone Numbers</th>
-</tr>
-<% @protest.rsvp_people.each do | person | %>
   <tr>
-    <td><%= person.name %></td>
-    <td><%= person.email %></td>
-    <td><%= person.phone_number %></td>
+    <th>Name</th>
+    <th>Emails</th>
+    <th>Phone Numbers</th>
   </tr>
-<% end %>
+  <% @protest.rsvp_people.each do |person| %>
+    <tr>
+      <td><%= person.name %></td>
+      <td><%= person.email %></td>
+      <td><%= person.phone_number %></td>
+    </tr>
+  <% end %>
 </table>
-
-<h2>Notify all protestors</h2>
-
-<%= form_tag(protest_admin_notify_path(@protest), method: "post") do %>
-  <%= label_tag(:message, "What do you want to say?") %>
-  <%= text_area_tag(:message) %>
-  <%= submit_tag("Send!") %>
+<% else %>
+  <%= blankslate 'No RSVPs yet' %>
 <% end %>
 
-<h2>Image upload URL</h2>
-<a href="https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %>">https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %></a>
+<div class="grid grid--spacious mt3">
+<div class="card bg-notify">
+  <h2 class="flex items-center mt0">
+    <%= inline_icon 'message', size: 36, class: 'mr1' %>
+    Notify all protestors
+  </h2>
+  <p class="mt0">Send an SMS blast to all your attendees.</p>
 
-<br>
-<br>
+  <%= form_tag(protest_admin_notify_path(@protest), method: "post") do %>
+    <%= label_tag :message %>
+    <%= text_area_tag :message %>
+    <%= submit_tag "Send!" %>
+  <% end %>
+</div>
 
-<%= link_to 'Edit', edit_protest_path(@protest) %> |
-<%= link_to 'Back', protests_path %>
+<div class="card bg-media">
+  <h2 class="flex items-center mt0 mb2">
+    <%= inline_icon 'photo', size: 36, class: 'mr1' %>
+    Image upload URL
+  </h2>
+  <p>Distibute to trusted organizers to upload event media.</p>
+  <strong><a href="https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %>">https://protestor-ljctmb.herokuapp.com/upload_image/<%= @protest.image_key %></a></strong>
+</div>
+</div>
