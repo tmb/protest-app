@@ -34,7 +34,7 @@ class Protest < ApplicationRecord
   end
 
   def upload_image_qr
-    RQRCode::QRCode.new(upload_image_url).as_svg
+    RQRCode::QRCode.new(upload_image_url).as_png
   end
 
   include Rails.application.routes.url_helpers
