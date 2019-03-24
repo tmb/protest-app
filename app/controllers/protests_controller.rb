@@ -15,9 +15,7 @@ class ProtestsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.pdf do
-        send_data @protest.generate_pdf.render
-      end
+      format.pdf
     end
   end
 
