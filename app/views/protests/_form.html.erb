@@ -27,8 +27,18 @@
   </div>
 
   <div class="field">
+    <%= form.label :start, 'Start time' %>
+    <%= form.date_time :start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end, 'End time' %>
+    <%= form.date_time :end %>
+  </div>
+
+  <div class="field">
     <%= form.label :what_to_bring %>
-    <%= form.text_area :what_to_bring, placeholder: "Protest signs&#10;Megaphones&#x0a;Water" %>
+    <%= form.text_area :what_to_bring, placeholder: 'Protest signs' %>
     <p class="muted h5 mt0">Put one item on each line.</p>
   </div>
 

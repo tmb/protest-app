@@ -109,7 +109,7 @@ class ProtestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def protest_params
-      params.require(:protest).permit(:name, :location, :description, :what_to_bring, :organizer_id)
+      params.require(:protest).permit(:name, :location, :description, :start, :end, :what_to_bring, :organizer_id)
     end
 
     def rsvp_params
