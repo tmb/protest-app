@@ -202,6 +202,13 @@ svg {
   height: 400px;
   border-radius: 0.75rem;
   background: $gray3;
+  margin-top: 1rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.galleria-theme-classic {
+  background: $gray9;
 }
 
 @import 'basscss';
