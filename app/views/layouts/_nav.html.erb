@@ -1,0 +1,16 @@
+<header class="flex items-center justify-between nav container mt3">
+  <%= link_to root_path do %>
+    <%= image_tag '/flag.svg', alt: 'Logo' %>
+  <% end %>
+  <nav class="flex items-center">
+    <%= link_to 'Upcoming', protests_path, class: 'text-decoration-none muted medium' %>
+    <%= link_to 'Organize', new_protest_path, class: 'btn bg-primary ml3' %>
+  </nav>
+</header>
+
+<% flash.each do |key, value| %>
+  <article role="alertdialog" class="flash flex items-center mt3 mb2 mx-auto <%= key %>" data-behavior="flash">
+    <span class="flex-auto"><%= value %></span>
+    <%= inline_icon 'view-close', size: 32, class: 'pointer' %>
+  </article>
+<% end %>
