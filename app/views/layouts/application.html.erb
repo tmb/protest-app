@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProtestApp</title>
+    <title>
+      <%= "#{yield(:title)} – " if content_for?(:title) %>
+      Protestor
+    </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#69ff00">
+    <meta name="msapplication-TileColor" content="#69ff00">
+    <meta name="theme-color" content="#69ff00">
   </head>
-
-  <body>
-    <%= yield %>
+  <body class="bg-snow <%= content_for :page_class %>">
+    <%= render 'layouts/nav' %>
+    <main class="container <%= content_for :container_class %>">
+      <%= yield %>
+    </main>
   </body>
 </html>
