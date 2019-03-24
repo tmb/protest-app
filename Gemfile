@@ -20,7 +20,8 @@ gem 'twilio-ruby', '~> 5.21.2'
 gem 'geocoder'
 gem 'local_time'
 gem 'prawn'
-gem 'prawn-rails'
+# gem 'prawn-rails'
+gem 'prawnto_2', require: 'prawnto'
 gem 'rqrcode'
 
 # Use CoffeeScript for .coffee assets and views

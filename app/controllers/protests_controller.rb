@@ -15,7 +15,12 @@ class ProtestsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.pdf
+      format.pdf do
+       render file: 'protests/show.pdf',
+           content_type: 'application/pdf',
+           filename: @protest.name,
+           disposition: 'inline'
+      end
     end
   end
 

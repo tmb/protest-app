@@ -9,6 +9,10 @@ module ApplicationHelper
     "#{local_time(event.start, '%B %e, %Y. %l:%M%P')} -#{local_time(event.end, '%l:%M%P')}"
   end
 
+  def event_time_plain(event)
+    "#{event.start.strftime '%B %e, %l:%M%P'} -#{event.end.strftime '%l:%M%P'}"
+  end
+
   def event_times(event)
     "#{local_time(event.start, '%l:%M%P')} -#{local_time(event.end, '%l:%M%P')}"
   end
