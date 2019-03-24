@@ -15,20 +15,26 @@
   <%= @protest.description %>
 </p>
 
-<p>
-  <h2 class="h3">From–to</h2>
-  <%= event_length(@protest).html_safe %>
-</p>
+<div class="flex items-center mt2 mb2">
+  <div class="calendar mr2">
+    <span class="calendar__month"><%= @protest.start.strftime('%B') %></span>
+    <span class="calendar__day"><%= @protest.start.day %></span>
+  </div>
+  <div>
+    <h2 class="h5 caps mt0 mb0">From–to</h2>
+    <span class="h3"><%= event_times(@protest).html_safe %></span>
+  </div>
+</div>
 
 <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAzUu3beD2W1qG04YTGrxq_-vvcDq78jew&center=<%= @protest.lat %>,<%= @protest.lng %>&zoom=18%20&maptype=satellite" frameborder="0" class="md-right"></iframe>
 
 <p>
-  <h2 class="h3">Location</h2>
+  <h2 class="h5 caps">Location</h2>
   <%= @protest.location %>
 </p>
 
 <div>
-  <h2 class="h3">What to bring</h2>
+  <h2 class="h5 caps">What to bring</h2>
   <ul class="list-style-none m0 p0">
     <% @protest.what_to_bring.lines.each do |line| %>
     <li class="flex items-center mb1">

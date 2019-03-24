@@ -9,6 +9,10 @@ module ApplicationHelper
     "#{local_time(event.start, '%B %e, %Y. %l:%M%P')} -#{local_time(event.end, '%l:%M%P')}"
   end
 
+  def event_times(event)
+    "#{local_time(event.start, '%l:%M%P')} -#{local_time(event.end, '%l:%M%P')}"
+  end
+
   def blankslate(text, options = {})
     other_options = options.except(:class)
     content_tag(:p, text, class: "mt0 mb0 pt2 pb2 slate bold h3 #{options[:class]}", **other_options)
@@ -69,7 +73,7 @@ module ApplicationHelper
   end
 
   def map_url(lat = 41.838796, lng = -83.200725, options = {})
-    "https://dev.virtualearth.net/REST/v1/Imagery/Map/Aerial/#{lat},#{lng}/11/?mapSize=2000,1500&format=png&key=AssBchuxLMpaS6MmACdfDyLpD4X7_T2SZ34cC_KBcWlPU6iZCsWgv0tTbw5Coehm"
+    "https://dev.virtualearth.net/REST/v1/Imagery/Map/Aerial/#{lat},#{lng}/15/?mapSize=2000,600&format=png&key=AssBchuxLMpaS6MmACdfDyLpD4X7_T2SZ34cC_KBcWlPU6iZCsWgv0tTbw5Coehm"
   end
 
   def page_md

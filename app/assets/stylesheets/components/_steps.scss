@@ -69,3 +69,24 @@
     color: $white;
   }
 }
+
+.calendar {
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  border: 4px solid $red5;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+}
+.calendar__month {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  background-color: $red5;
+  color: $white;
+  font-weight: 500;
+}
+.calendar__day {
+  font-size: 1.5rem;
+  line-height: 1.375;
+}
