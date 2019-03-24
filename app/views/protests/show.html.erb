@@ -32,6 +32,12 @@
   </ul>
 </div>
 
+<div class="galleria">
+    <% @protest.images.each do |img| %>
+      <img src="<%= polymorphic_url(img) %>">
+    <% end %>
+</div>
+
 <article class="card max-width-2 mt3">
   <h2 class="mt0 mb2 pb1 border-bottom">RSVP for the protest</h2>
   <p>By RSVP’ing, organizers get your info for contacting you with updates.</p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_053024) do
+ActiveRecord::Schema.define(version: 2019_03_24_073559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_03_24_053024) do
     t.float "latitude"
     t.float "longitude"
     t.string "image_key"
+    t.datetime "start"
+    t.datetime "end"
     t.index ["organizer_id"], name: "index_protests_on_organizer_id"
   end
 
