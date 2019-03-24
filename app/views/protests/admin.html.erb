@@ -37,6 +37,14 @@
 <% end %>
 </table>
 
+<h2>Notify all protestors</h2>
+
+<%= form_tag(protest_admin_notify_path(@protest), method: "post") do %>
+  <%= label_tag(:message, "What do you want to say?") %>
+  <%= text_area_tag(:message) %>
+  <%= submit_tag("Send!") %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_protest_path(@protest) %> |
 <%= link_to 'Back', protests_path %>

@@ -3,14 +3,20 @@ require 'twilio-ruby'
 class SendTwilioMessagesJob < ApplicationJob
   queue_as :default
 
-  account_sid = "AC9581b5bcda2ce9cf3eb4db76e57b6ed7"
-  auth_token = "a6294e89d29382248297d6a47d589d15"
+  account_sid = "AC399428ed23277a73a610de8006977b96"
+  auth_token = "88d3c3f99e192fd7d3e406ef0b4a021b"
 
-  client = Twilio::REST::Client.new account_sid, auth_token
+  FROM_NUMBER = "+17743714212"
 
-  def perform(phone_numbers, message)
+  CLIENT = Twilio::REST::Client.new account_sid, auth_token
+
+  def perform(phone_numbers, theMessage)
     phone_numbers.each do | number |
-      client.api.account.messages.create
+      CLIENT.api.account.messages.create(
+          from: FROM_NUMBER,
+          to: number,
+          body: theMessage
+        )
     end
   end
 end

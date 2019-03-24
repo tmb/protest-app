@@ -1,6 +1,6 @@
 class ProtestsController < ApplicationController
   before_action :set_protest, only: [:show, :edit, :update, :destroy]
-  before_action :set_protest_id, only: [:rsvp, :admin]
+  before_action :set_protest_id, only: [:rsvp, :admin, :notify]
 
   # GET /protests
   # GET /protests.json
@@ -59,6 +59,12 @@ class ProtestsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def notify
+    SendTwilioMessagesJob.perform_now(@protest.rsvp_people.pluck(:phone_number), params[:message])
+    flash[:success] = "Message sent to #{@protest.rsvp_people.count} protesters!"
+    redirect_to protest_admin_path(@protest)
   end
 
   def admin
