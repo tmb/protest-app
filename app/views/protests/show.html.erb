@@ -1,7 +1,7 @@
 <% page_md %>
 
 </main>
-<header class="w-100 map-header" style="background-image: url(<%= map_url %>);">
+<header class="w-100 map-header" style="background-image: url(<%= map_url(@protest.lat, @protest.lng) %>);">
   <div class="container container--md">
     <%= link_to 'All Events', protests_path, class: 'breadcrumb block h3 mt3' %>
     <h1 class="heading"><%= @protest.name %></h1>
@@ -15,10 +15,13 @@
   <%= @protest.description %>
 </p>
 
+<iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAzUu3beD2W1qG04YTGrxq_-vvcDq78jew&center=<%= @protest.lat %>,<%= @protest.lng %>&zoom=18%20&maptype=satellite" frameborder="0" class="md-right"></iframe>
+
 <p>
   <h2 class="h3">Location</h2>
   <%= @protest.location %>
 </p>
+
 
 <div>
   <h2 class="h3">What to bring</h2>
@@ -34,7 +37,7 @@
 
 <article class="card max-width-2 mt3">
   <h2 class="mt0 mb2 pb1 border-bottom">RSVP for the protest</h2>
-  <p>By RSVP’ing, organizers get your info for contacting you with updates.</p>
+  <p>By RSVP’ing, organizers get your info for sending you updates.</p>
   <%= render 'rsvp_form', protest: @protest %>
 </article>
 
