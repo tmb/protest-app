@@ -1,3 +1,6 @@
 class Protest < ApplicationRecord
-  belongs_to :organizer
+  has_many :organizers
+  has_many :users, through: :organizers
+
+  has_many :rsvp_people
 end

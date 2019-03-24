@@ -20,14 +20,23 @@
   <%= @protest.what_to_bring %>
 </p>
 
-<p>
-  <strong>Organizers:</strong>
-  <%= @protest.organizers %>
-</p>
 
+<h2>RSVPs</h2>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Emails</th>
+  <th>Phone Numbers</th>
+</tr>
+<% @protest.rsvp_people.each do | person | %>
+  <tr>
+    <td><%= person.name %></td>
+    <td><%= person.email %></td>
+    <td><%= person.phone_number %></td>
+  </tr>
+<% end %>
+</table>
 
-<h2>RSVP for the Protest</h2>
-<%= render 'rsvp_form', protest: @protest %>
 
 <%= link_to 'Edit', edit_protest_path(@protest) %> |
 <%= link_to 'Back', protests_path %>

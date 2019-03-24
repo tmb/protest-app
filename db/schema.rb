@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_193854) do
+ActiveRecord::Schema.define(version: 2019_03_23_231841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,5 +33,16 @@ ActiveRecord::Schema.define(version: 2019_03_23_193854) do
     t.index ["organizer_id"], name: "index_protests_on_organizer_id"
   end
 
+  create_table "rsvp_people", force: :cascade do |t|
+    t.text "name"
+    t.text "email"
+    t.text "phone_number"
+    t.bigint "protest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["protest_id"], name: "index_rsvp_people_on_protest_id"
+  end
+
   add_foreign_key "protests", "organizers"
+  add_foreign_key "rsvp_people", "protests"
 end

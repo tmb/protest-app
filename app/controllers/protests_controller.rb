@@ -1,5 +1,6 @@
 class ProtestsController < ApplicationController
   before_action :set_protest, only: [:show, :edit, :update, :destroy]
+  before_action :set_protest_id, only: [:rsvp, :admin]
 
   # GET /protests
   # GET /protests.json
@@ -10,6 +11,7 @@ class ProtestsController < ApplicationController
   # GET /protests/1
   # GET /protests/1.json
   def show
+    @rsvp_person = @protest.rsvp_people.new
   end
 
   # GET /protests/new
@@ -51,6 +53,19 @@ class ProtestsController < ApplicationController
     end
   end
 
+  def rsvp
+    if @protest.rsvp_people.create(rsvp_params)
+      redirect_to @protest, notice: "You've successfully RSVP'd for #{@protest.name}!"
+    else
+      render :show
+    end
+  end
+
+  def admin
+  end
+
+
+
   # DELETE /protests/1
   # DELETE /protests/1.json
   def destroy
@@ -67,8 +82,16 @@ class ProtestsController < ApplicationController
       @protest = Protest.find(params[:id])
     end
 
+    def set_protest_id
+      @protest = Protest.find(params[:protest_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def protest_params
       params.require(:protest).permit(:name, :location, :description, :what_to_bring, :organizer_id)
+    end
+
+    def rsvp_params
+      params.require(:rsvp_person).permit(:name, :email, :phone_number)
     end
 end
