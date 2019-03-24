@@ -1,38 +1,38 @@
-<p id="notice"><%= notice %></p>
+<% page_md %>
 
-<p>
-  <strong>Name:</strong>
+<%= link_to 'All Events', protests_path, class: 'breadcrumb block h3 mt3' %>
+
+<h1 class="heading">
   <%= @protest.name %>
-</p>
+</h1>
 
-<p>
-  <strong>Location:</strong>
-  <%= @protest.location %>
-</p>
+<%= link_to 'Edit', edit_protest_path(@protest), class: 'btn bg-info right ml2' %>
 
-<p>
-  <strong>Description:</strong>
+<p class="h2">
   <%= @protest.description %>
 </p>
 
 <p>
-  <strong>What to bring:</strong>
-  <%= @protest.what_to_bring %>
+  <h2 class="h3">Location</h2>
+  <%= @protest.location %>
 </p>
 
-<p>
-  <strong>Organizers:</strong>
-  <%= @protest.organizers %>
-</p>
+<div>
+  <h2 class="h3">What to bring</h2>
+  <ul class="list-style-none m0 p0">
+    <% @protest.what_to_bring.lines.each do |line| %>
+    <li class="flex items-center mb1">
+      <%= inline_icon 'checkmark', size: 32, class: 'muted mr1' %>
+      <span><%= line %></span>
+    </li>
+    <% end %>
+  </ul>
+</div>
 
+<article class="card max-width-2 mt3">
+  <h2 class="mt0 mb2 pb1 border-bottom">RSVP for the protest</h2>
+  <p>By RSVP’ing, organizers get your info for contacting you with updates.</p>
+  <%= render 'rsvp_form', protest: @protest %>
+</article>
 
-<h2>RSVP for the Protest</h2>
-<%= render 'rsvp_form', protest: @protest %>
-
-<%= link_to 'Edit', edit_protest_path(@protest) %> |
-<%= link_to 'Back', protests_path %>
-
-
-<br>
-<br>
 <%= link_to 'Admin', protest_admin_path(@protest) %>
