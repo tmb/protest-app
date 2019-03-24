@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def pop_icon_to(icon, url, options = {})
     link_to url, options.merge({ class: "pop #{options[:class]}" }) do
-      inline_icon icon, size: 28
+      inline_icon icon, size: options[:size] || 36
     end
   end
 
@@ -54,12 +54,8 @@ module ApplicationHelper
     data: { name: name.to_s, behavior: 'filterbar_item' }
   end
 
-  def home_action_size
-    @home_size.to_i > 48 ? 36 : 28 
-  end
-
-  def page_hide_home
-    @hide_home = true
+  def map_url(lat = 41.838796, lng = -83.200725, options = {})
+    "https://dev.virtualearth.net/REST/v1/Imagery/Map/Aerial/#{lat},#{lng}/11/?mapSize=2000,1500&format=png&key=AssBchuxLMpaS6MmACdfDyLpD4X7_T2SZ34cC_KBcWlPU6iZCsWgv0tTbw5Coehm"
   end
 
   def page_md
