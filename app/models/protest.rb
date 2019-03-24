@@ -26,8 +26,16 @@ class Protest < ApplicationRecord
   def generate_pdf
     pdf = Prawn::Document.new
     pdf.text "hi!"
-    
+
     pdf
+  end
+
+  def upload_image_url
+    "https://protestor-ljctmb.herokuapp.com/upload_image/#{self.image_key}"
+  end
+
+  def upload_image_qr
+    RQRCode::QRCode.new(upload_image_url).as_svg
   end
 
   private
