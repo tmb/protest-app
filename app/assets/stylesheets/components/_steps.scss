@@ -35,3 +35,37 @@
     bottom: -40px;
   }
 }
+
+.bg-notify {
+  background: radial-gradient(
+    ellipse farthest-corner at top left,
+    $cyan6,
+    $blue5
+  );
+  color: $white;
+
+  textarea {
+    background: rgba(255, 255, 255, 0.5);
+    mix-blend-mode: screen;
+  }
+
+  input[type='submit'],
+  .btn {
+    background: $white;
+    color: $blue5;
+    margin: 1rem 0 0;
+  }
+}
+
+.bg-media {
+  background: radial-gradient(
+    ellipse farthest-corner at top left,
+    $pink5,
+    $red5
+  );
+  color: $white;
+
+  a {
+    color: $white;
+  }
+}

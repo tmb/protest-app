@@ -5,7 +5,7 @@
   <div class="container container--md">
     <%= link_to 'All Events', protests_path, class: 'breadcrumb block h3 mt3' %>
     <h1 class="heading"><%= @protest.name %></h1>
-    <%= pop_icon_to 'edit', edit_protest_path(@protest), class: 'info right ml2 tooltipped tooltipped--s', 'aria-label': 'Edit details' %>
+    <%= pop_icon_to 'admin-badge', protest_admin_path(@protest), class: 'warning right ml2 tooltipped tooltipped--s', 'aria-label': 'Admin tools for this event' %>
   </div>
 </header>
 
@@ -21,7 +21,6 @@
   <h2 class="h3">Location</h2>
   <%= @protest.location %>
 </p>
-
 
 <div>
   <h2 class="h3">What to bring</h2>
@@ -40,5 +39,3 @@
   <p>By RSVP’ing, organizers get your info for sending you updates.</p>
   <%= render 'rsvp_form', protest: @protest %>
 </article>
-
-<%= link_to 'Admin', protest_admin_path(@protest) %>

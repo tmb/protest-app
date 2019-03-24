@@ -28,17 +28,17 @@
 
   <div class="field">
     <%= form.label :start, 'Start time' %>
-    <%= form.date_time :start %>
+    <%= form.datetime_select :start %>
   </div>
 
   <div class="field">
     <%= form.label :end, 'End time' %>
-    <%= form.date_time :end %>
+    <%= form.datetime_select :end %>
   </div>
 
   <div class="field">
     <%= form.label :what_to_bring %>
-    <%= form.text_area :what_to_bring, placeholder: 'Protest signs' %>
+    <%= form.text_area :what_to_bring, placeholder: 'Protest signs', class: 'max-width-1' %>
     <p class="muted h5 mt0">Put one item on each line.</p>
   </div>
 
