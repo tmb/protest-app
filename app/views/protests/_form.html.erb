@@ -13,30 +13,24 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: 'Youth Demonstration for Climate Change @ the White House' %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_area :location %>
+    <%= form.text_area :location, placeholder: '1600 Pennsylvania Ave NW, Washington, DC 20500' %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, placeholder: 'The current administration denies climate change…' %>
   </div>
 
   <div class="field">
     <%= form.label :what_to_bring %>
-    <%= form.text_area :what_to_bring %>
+    <%= form.text_area :what_to_bring, placeholder: "Protest signs&#10;Megaphones&#x0a;Water" %>
+    <p class="muted h5 mt0">Put one item on each line.</p>
   </div>
-
-  <% admin_tools do %>
-  <div class="field">
-    <%= form.label :organizer_id %>
-    <%= form.text_field :organizer_id %>
-  </div>
-  <% end %>
 
   <div class="actions">
     <%= form.submit %>
