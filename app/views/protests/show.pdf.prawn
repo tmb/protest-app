@@ -13,7 +13,7 @@ font 'GTAmerica'
 fallback_fonts ['Times-Roman']
 
 canvas do
-	fill_color blue
+	fill_color red
 	fill_rectangle [bounds.left, bounds.top], bounds.right, 72
 end
 
@@ -21,10 +21,10 @@ move_down 8
 text @protest.location, size: 20, color: white, style: :condensed
 
 move_down 64
-text @protest.name, color: red, style: :extended, size: 48
+text @protest.name, color: blue, style: :extended, size: 48
 
 move_down 16
-text event_time_plain(@protest), color: blue, size: 24
+text event_time_plain(@protest), color: red, size: 24
 
 move_down 16
 text @protest.description, color: black, size: 20
